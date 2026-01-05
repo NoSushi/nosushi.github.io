@@ -5,19 +5,7 @@ export const planets = [
 ];
 
 export const oversectors = [
-  {
-    name: "Core",
-    color: "#3b82f6",
-    points: [[-20,-20],[20,-20],[20,20],[-20,20]]
-  },
-  {
-    name: "Mid Rim",
-    color: "#22c55e",
-    points: [[20,-40],[80,-40],[80,20],[20,20]]
-  },
-  {
-    name: "Outer Rim",
-    color: "#eab308",
-    points: [[-100,20],[100,20],[100,100],[-100,100]]
-  }
+  { name: "Core", color: "#3b82f6", points: [[-20,-20],[20,-20],[20,20],[-20,20]] },
+  { name: "Mid Rim", color: "#22c55e", points: [[20,-40],[80,-40],[80,20],[20,20]] },
+  { name: "Outer Rim", color: "#eab308", points: [[-100,20],[100,20],[100,100],[-100,100]] }
 ];
