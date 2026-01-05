@@ -2,9 +2,7 @@ import { planets, oversectors } from "./data.js";
 
 /* ---------------- SVG SETUP ---------------- */
 const svg = d3.select("#map");
-
-/* Disable default double-click zoom for clarity */
-svg.on("dblclick.zoom", null);
+svg.on("dblclick.zoom", null); // Disable default double-click zoom
 
 /* ---------------- MAP GROUP ---------------- */
 const mapGroup = svg.append("g");
@@ -47,15 +45,14 @@ function showPlanetInfo(d) {
   const distance = Math.hypot(d.x - referencePlanet.x, d.y - referencePlanet.y).toFixed(2);
 
   d3.select("#info").html(`
-    <h2>${d.name}</h2>
-    <input type="text" id="search" placeholder="Search planet..." />
-    <p><strong>Owner:</strong> ${d.owner}</p>
-    <p><strong>Oversector:</strong> ${d.oversector}</p>
-    <p><strong>Distance from ${referencePlanet.name}:</strong> ${distance}</p>
+<h2>${d.name}</h2>
+<input type="text" id="search" placeholder="Search planet..." />
+<p><strong>Owner:</strong> ${d.owner}</p>
+<p><strong>Oversector:</strong> ${d.oversector}</p>
+<p><strong>Distance from ${referencePlanet.name}:</strong> ${distance}</p>
   `);
 
-  // Rebind search event since we recreated the input
-  setupSearch();
+  setupSearch(); // Rebind search after recreating input
 }
 
 planetNodes.on("click", (event, d) => showPlanetInfo(d));
@@ -69,7 +66,6 @@ function setupSearch() {
     const query = this.value.toLowerCase();
     const match = planets.find(p => p.name.toLowerCase().startsWith(query));
     if (match) {
-      // Center the map on the planet
       centerOnPlanet(match);
       showPlanetInfo(match);
     }
@@ -84,10 +80,8 @@ function centerOnPlanet(planet) {
   const svgWidth = svg.node().clientWidth;
   const svgHeight = svg.node().clientHeight;
 
-  // Get current transform
   const currentTransform = d3.zoomTransform(svg.node());
 
-  // Target translation to center planet
   const x = svgWidth / 2 - planet.x * currentTransform.k;
   const y = svgHeight / 2 - planet.y * currentTransform.k;
 
